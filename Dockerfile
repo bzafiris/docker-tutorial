@@ -1,5 +1,4 @@
 FROM python:3.7.3-alpine3.9
-# Dockerfile available in https://github.com/docker-library/python/blob/34c9df35e9a69e9f0edde88e861b543edb8bc07a/3.7/alpine3.9/Dockerfile
 
 ENV FLASK_APP app.py
 ENV FLASK_RUN_HOST 0.0.0.0
@@ -16,4 +15,5 @@ COPY ./app /app
 # Set the working directory to /app
 WORKDIR /app
 
-CMD ["flask", "run"]
+# Set the command to run on container start up
+ENTRYPOINT ["flask", "run"]
