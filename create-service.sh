@@ -1,14 +1,15 @@
 #!/bin/bash
 
-# 1. Create a bridge network with name my-net
+# 1. Create a user-defined bridge network with name my-net
 docker network create my-net
 
-# 2. Create a volume for redis-data
+# 2. Create a volume for redis data
 docker volume create redis-data
 
 # 3. Create a redis container with name db 
 #    from image redis:5.0.5-alpine3.9 
-#    that attaches to network my-net
+#    that mounts volume redis-data to container directory /data 
+#    and attaches to network my-net
 #    and executes redis-server on startup
 docker create --name db --network my-net -v redis-data:/data redis:5.0.5-alpine3.9 redis-server
 
@@ -26,3 +27,4 @@ docker create --name web --network my-net -p 5000:5000 flask:latest
 
 # 7. Start web container
 docker start web
+
