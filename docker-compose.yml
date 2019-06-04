@@ -1,8 +1,22 @@
 version: '3'
 services:
+# Flask application container configuration
   web:
     build: .
     ports:
       - "5000:5000"
+    depends_on:
+      - db
+# Redis database container configuration
   db:
     image: "redis:5.0.5-alpine3.9"
+    volumes:
+      - redis-data:/data
+# Configuration of docker volumes
+volumes:
+  redis-data:
+# A user-defined bridge is created by default
+
+
+
+
