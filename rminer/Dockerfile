@@ -12,6 +12,6 @@ RUN apt-get update && apt-get install -y unzip
 RUN mv ./build/distributions/RefactoringMiner.zip /opt \
     && unzip /opt/RefactoringMiner.zip -d /opt/
 
-WORKDIR /opt/RefactoringMiner
+WORKDIR /workspace
 
-ENTRYPOINT ["./bin/RefactoringMiner"]
+ENTRYPOINT ["/opt/RefactoringMiner/bin/RefactoringMiner"]
