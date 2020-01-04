@@ -3,6 +3,8 @@ import time
 import redis
 from flask import Flask
 
+import socket
+
 app = Flask(__name__)
 cache = redis.Redis(host='db', port=6379)
 
@@ -23,4 +25,5 @@ def get_hit_count():
 def hello():
     count = get_hit_count()
     #count = 0
-    return 'Hello World! I have been seen {} times.\n'.format(count)
+    host_name = socket.gethostbyname(socket.gethostname())
+    return '[{}] Hello World! I have been seen {} times.\n'.format(host_name, count)
