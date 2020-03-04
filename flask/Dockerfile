@@ -10,7 +10,8 @@ COPY ./requirements.txt /requirements.txt
 RUN pip install --trusted-host pypi.python.org -r /requirements.txt
 
 # Copy the current directory contents into the container at /app
-COPY ./app /app
+# COPY ./app /app
+VOLUME ["/app"]
 
 # Set the working directory to /app
 WORKDIR /app
