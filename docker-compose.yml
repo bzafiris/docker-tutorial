@@ -1,17 +1,25 @@
-version: '3'
+version: '3.5'
 services:
-# Flask application container configuration
+
+  # Flask application container configuration
   web:
-    build: .
+    build:
+      context: ./flask
     ports:
-      - "5000:5000"
+      - "5005:5000"
+    volumes:
+      - ./app:/app
     depends_on:
       - db
-# Redis database container configuration
+
+  # Redis database container configuration
   db:
-    image: "redis:5.0.5-alpine3.9"
+    image: "redis:6.2.6-alpine"
     volumes:
       - redis-data:/data
+    command: redis-server --save 60 1 --loglevel warning
+
+    
 # Configuration of docker volumes
 volumes:
   redis-data:
