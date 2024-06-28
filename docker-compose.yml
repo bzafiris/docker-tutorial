@@ -7,8 +7,6 @@ services:
       context: ./flask
     ports:
       - "5005:5000"
-    volumes:
-      - ./app:/app
     depends_on:
       - db
 
