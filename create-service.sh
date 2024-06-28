@@ -16,8 +16,10 @@ docker create --name db --network my-net -v redis-data:/data redis:5.0.5-alpine3
 # Start db container
 docker start db
 
+cd flask
 # Create custom image from local Dockerfile, named flask:latest
 docker build -t flask:latest .
+cd ..
 
 # Create a flask container with name web 
 #    from Dockerfile specified image
