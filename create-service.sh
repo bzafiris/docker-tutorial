@@ -24,7 +24,7 @@ docker build -t flask:latest .
 #    that attaches to network my-net
 #    bind mounts the host directory app to /app inside the container
 #    and exports port 5000
-docker create --name web --network my-net -v "$(pwd)"/app:/app -p 5000:5000 flask:latest
+docker create --name web --network my-net -p 5000:5000 flask:latest
 
 # 7. Start web container
 docker start web
