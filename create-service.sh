@@ -23,11 +23,11 @@ docker create --name web    --network my-net \
 #    and executes redis-server on startup
 docker create --name db --network my-net \
                         --volume redis-data:/data \
-                        redis:5.0.5-alpine3.9 redis-server
+                        redis:6.2.6-alpine redis-server
 
 # Start containers
 docker start web db
 
-
+cd ..
 
 
